@@ -1,0 +1,481 @@
+
+/*---- COLORS ----*/
+
+$bright-font: #fff;
+$dark-font: #000;
+$font-color: #5a5a5a;
+$highlight: #ed145b;
+$section-background: #f4f4f4;
+$footer-background: #2b2b2b;
+
+/*---- MIXINS ----*/
+
+@mixin size($height, $width) {
+    height: $height;
+    width: $width;
+}
+
+@mixin square-size($dimension) {
+    height: $dimension;
+    width: $dimension;
+}
+
+@mixin font($size, $color) {
+    font-size: $size;
+    color: $color;
+}
+
+
+/*---- REUSABLE COMPONENTS ----*/
+
+.underline {
+    @include size(2px, 20%);
+    background-color: $highlight;
+    margin: 20px auto;
+    @media (max-width: 760px) {
+        margin: 10px auto;
+    }
+    
+}
+
+.line {
+    max-width: 100vw;
+    height: 0;
+    border-left: 98vw solid $highlight;
+    border-bottom: 30px solid #f4f4f4;
+}
+/* wywołuje scrolla! */
+
+$phone: "(min-width: 520px)";
+$small-tablet: "(min-width: 760px)";
+$big-tablet: "(min-width: 960px)";
+$desktop: "(min-width: 1200px)";
+
+/*---- HEADINGS ----*/
+
+h1 {
+    text-transform: uppercase;
+    @include font(46px, $bright-font);
+    @media (max-width: 760px) {
+        font-size: 32px;
+    }
+}
+
+h2 {
+    font-style: italic;
+    @include font(38px, $font-color);
+}
+
+h3 {
+    font-size: 22px;
+    @media (max-width: 760px) {
+        font-size: 18px;
+    }
+}
+
+h6 {
+    font-weight: 400;
+    text-transform: uppercase;
+    @include font(15px, $highlight);
+}
+
+p {
+    @include font(15px, $font-color);
+    line-height: 24px;
+}
+/*---- BUTTONS ----*/
+
+.btn {
+    @include size(50px, 200px);
+    border: none;
+    border-radius: 25px;
+    background-color: $highlight;
+    text-transform: uppercase;
+    font-weight: 700;
+    @include font(15px,$bright-font);
+    transition: 0.3s ease-in;
+    cursor: pointer;
+}
+
+.btn:hover {transform: scale(1.1);}
+
+.btn-small {
+    @media (max-width: 760px) {
+        @include size(40px, 145px);
+        font-size: 13px;
+    }
+}
+
+/* ---- GRID ---- */
+
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.row {
+    margin: 0;
+}
+
+.row:before,
+.row:after {
+	content:"";
+	display: table;
+	clear: both;
+}
+
+[class*="col-"] {
+	float: left;
+	padding: 12px;
+    width: 100%;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.col-offset-1 {margin-left: 8.33%;}
+.col-offset-2 {margin-left: 16.66%;}
+.col-offset-3 {margin-left: 25%;}
+.col-offset-4 {margin-left: 33.33%;}
+.col-offset-5 {margin-left: 41.66%;}
+.col-offset-6 {margin-left: 50%;}
+.col-offset-7 {margin-left: 58.33%}
+.col-offset-8 {margin-left: 66.66%;}
+.col-offset-9 {margin-left: 75%;}
+.col-offset-10 {margin-left: 83.33%;}
+.col-offset-11 {margin-left: 91.66%;}
+
+/*---- GENERAL ----*/
+
+* {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+.container {
+    margin: 0;
+}
+
+
+/*---- NAV ----*/
+
+.container-jumbotron {
+    @include square-size(100%);
+    background-image: url("img/jumbotron_1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    .nav {
+        ul {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 0 10%;
+            padding: 20px 0 0 0;
+            list-style-type: none;
+            li {
+                padding-right: 15px;
+                font-size: 18px;
+                a {text-decoration: none;
+                    color: $bright-font;
+                    &:hover {color: $highlight;}
+                }
+                @media (max-width: 760px){
+                    padding: 5px;
+                }
+            }
+            .logo {
+                margin-right: auto;
+                span {color: $highlight;}
+                font-family: 'Roboto';
+                font-weight: 700;
+                @include font(26px, $bright-font);
+                @media (max-width: 760px){
+                    margin:0 auto;
+                }
+            } 
+            @media (max-width: 760px){
+                flex-direction: column;
+            }
+        } 
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 200px 5% 0 5%;
+        h1 span {font-weight: 900;}
+        h3 {
+            color: $bright-font;
+            &:last-of-type {margin-bottom: 65px;}
+        }
+        @media (max-width: 760px){
+            padding-top: 30px;
+        }
+    }
+}
+
+
+
+
+
+/*---- SHOWCASE ----*/
+
+.container-showcase {
+    position: relative;
+    padding: 5% 0 5% 15%;
+    background-color: $section-background;
+    .showcase-description {
+        .underline {
+            margin-left: 0;
+            width: 50%;
+        }
+        h6 {
+            margin-top: 15px;
+            line-height: 30px;
+            display: flex;
+            align-content: center;
+            img {
+                @include square-size(30px);
+                margin-left: 10px;
+            }
+        }
+    }
+    .laptop-wrapper {
+        position: absolute;
+        right: 0;
+        @include size (550px, 700px);
+        background-image: url("img/macbook.png");
+        background-size: cover;
+    }
+}
+
+/*---- SERVICES ----*/
+.container-services {
+    padding: 100px 10%;
+    .services-description {
+        padding: 40px 25%;
+        text-align: center;
+    }
+    .services-icon {
+        text-align: center;
+    }
+}
+
+/*---- QUOTE ----*/
+
+.carousel {
+    padding: 10% 20% 30%;
+    height: 400px;
+    background-image: url("img/jumbotron_1.png");
+    background-size: cover;
+    .carousel-indicators li { visibility: hidden; }
+    .testimonial {  
+        p {
+            @include font(25px,$bright-font);
+            font-style: italic;
+        }
+        span {
+            @include font(100px,$highlight);
+            font-family: 'Lato';
+            font-weight: 900;
+        }
+        .reverse {
+            display: inline-block;
+            transform: rotate(180deg);
+        }
+    }
+}
+
+/*---- PRICES ----*/
+
+.container-prices {
+    padding: 5% 10%;
+    background-color: $section-background;
+    .prices-description {padding: 0% 20% 7%;}
+    .prices-plan-top {
+        @include size (150px, 250px);
+        position: relative;
+        background-color: #5a5a5a;
+        &:hover {
+            background-color: $highlight;
+        }   
+        p {
+            color: #fff;
+            &:first-of-type {
+                font-weight: 700;
+                font-size: 50px;
+                padding-top: 50px;
+                margin: 0;
+            span {font-size: 20px;}
+            }
+        }
+        button {
+            position: absolute;
+            left: 25px;
+            bottom: -25px;
+            background-color: $section-background;
+            color: #5a5a5a;
+        }   
+    }   
+    .prices-plan-bottom {
+        @include size (315px, 250px);
+        background-color: #fff;
+        ul {
+            padding: 65px 0 0 0;
+            line-height: 30px;
+            list-style-type: none;
+        }
+        button {margin-top: 30px;}
+    }
+}
+
+/*---- ADVANTAGES ----*/
+
+.container-advantages {
+    padding: 10%;
+    img {
+        padding: 60px 15px;
+        float: left;
+    }  
+}
+
+/*---- JOIN ----*/
+
+.container-join {
+    padding: 50px 10%;
+    background-color: $highlight;
+    h1 {
+        font-weight: 300;
+        @include font(36px,$section-background);
+        span {font-weight: 700;}
+        button {
+            margin-left: 25px;
+            background-color: $section-background;
+            color: $highlight;
+        }
+    }
+}
+ 
+/*---- GALLERY ----*/
+
+.container-gallery {
+    padding: 30px 10%;
+    background-color: #fff;
+    .gallery-description {padding: 5% 25%;}
+    .gallery-img {
+        padding: 0;
+        position: relative;
+        margin: 10px 10px 150px;
+        @include size(250px, 350px);
+        &:hover .layer-gallery {opacity: 1;}
+        .layer-gallery {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0; 
+            z-index: 1;
+            background-color: rgba(237,20,91,0.6);
+            transition: .4s;
+            .layer-relative {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0;
+                i {
+                    margin: 10px;
+                    cursor: pointer;
+                    padding: 5px;
+                    border-radius: 5px;
+                    @include font(30px,$section-background);
+                }   
+            }
+        }
+        img {
+            object-fit: cover;
+            @include size(100%, 100%);
+        }
+        .gallery-bottom {
+            padding: 20px 20px 0;
+            height: 140px;
+            background-color: $section-background;
+            h6 {
+                padding-bottom: 15px;
+                margin: 0;
+                color: $font-color;
+            }
+        }       
+    }
+    .show-more-button {
+        padding: 5% 5% 0;
+        a {  
+            text-decoration: none;
+            h6 {margin: 0;}
+            i {@include font(20px,$highlight);}
+        }
+    }
+}
+
+/*---- MACHE-MORE ----*/
+
+.mache-jumbotron {
+    @include size(50vh, 100%);
+    .mache-description {
+        padding: 60px 20%;
+        h2, p {color: $section-background;}
+        p {padding-bottom: 30px;}
+    }
+}
+
+/*---- DOWNLOAD ----*/
+
+.container-download {
+    padding: 10%;
+    img {
+        max-height: 400px;
+        @include size(100%,100% );
+    }
+    .underline {
+        width: 200px;
+        margin-left: 0;
+    }
+}
+
+/*---- FOOTER ----*/
+
+.container-footer {
+    height: 100px;
+    background-color: $footer-background;
+    h6 {
+        margin: 0;
+        padding-top: 30px;
+        color: $section-background;
+        .dot {
+            font-weight: 700;
+            color: $highlight;
+        }
+        .company {font-weight: 700;}
+    }
+}
+
+
+
